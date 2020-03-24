@@ -1,0 +1,12 @@
+.idea
+\.idea/
+.idea/workspace.xml
+\.idea/workspace.xml
+\.target
+.target
+**/*.iml
+\**/*.iml
+**/target
+\**/target
+**/\.target
+**/.target
