@@ -29,7 +29,7 @@ public class PeopleInterceptor extends HandlerInterceptorAdapter {
         try {
             logger.info("### "+prefix+" ### REQUEST URL: {}", request.getRequestURI());
         } catch (Exception e) {
-            logger.error("### "+prefix+" ### ERROR MESSAGE: "+e.getMessage());
+            logger.error("### "+prefix+" ### ERROR MESSAGE ### : "+e.getMessage());
         }
     }
 }
