@@ -1,4 +1,4 @@
-# excercise
+# exercise
 This microservices project for get people data and see historical disease
 
 if failed run docker, you can run manually:
@@ -9,6 +9,6 @@ after that, you can see on swagger: http://localhost:8081/swagger-ui.html
 2. second run history project, run on history folder:
 mvn spring-boot:run -Dmaven.test.skip=true
 after that, you can see on swagger: http://localhost:8082/swagger-ui.html
-2. second run data project, run on data folder:
+3. third run data project, run on data folder:
 mvn spring-boot:run -Dmaven.test.skip=true
 after that, you can see on swagger: http://localhost:8083/swagger-ui.html
