@@ -1,5 +1,5 @@
 package com.history.services;
 
 public interface HistoryService {
-    Object getHistory(Long id);
+    String getHistory(Long id);
 }

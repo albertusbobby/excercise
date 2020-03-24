@@ -16,8 +16,8 @@ public class HistoryController {
     HistoryService historyService;
 
     @PostMapping("/{id}")
-    private Object getHistory(@PathVariable Long id){
-        return historyService.getHistory(id);
+    private GeneralResponse getHistory(@PathVariable Long id){
+        return GeneralResponse.response(historyService.getHistory(id));
     }
 
 }

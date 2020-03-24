@@ -1,5 +1,6 @@
 package com.history.services.impl;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.history.responses.GeneralResponse;
 import com.history.services.HistoryService;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,11 +14,12 @@ public class HistoryServiceImpl implements HistoryService {
     @Value("${microservices.people.history.url}") private String peopleHistoryUrl;
 
     @Override
-    public Object getHistory(Long id) {
+    public String getHistory(Long id) {
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> result = restTemplate.exchange(peopleHistoryUrl+id, HttpMethod.POST, null, String.class);
+        ResponseEntity<GeneralResponse> result = restTemplate.exchange(peopleHistoryUrl+id, HttpMethod.POST, null, GeneralResponse.class);
         if(result!=null){
-            return result.getBody();
+            ObjectMapper objectMapper = new ObjectMapper();
+            return objectMapper.convertValue(result.getBody().getData(), String.class);
         }else{
             return null;
         }
