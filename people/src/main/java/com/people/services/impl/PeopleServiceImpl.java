@@ -9,7 +9,6 @@ import com.people.repositories.RequestRepository;
 import com.people.requests.PeopleDetailRequest;
 import com.people.requests.PeopleRequest;
 import com.people.responses.GeneralResponse;
-import com.people.responses.HistoryResponse;
 import com.people.services.PeopleService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,7 +72,7 @@ public class PeopleServiceImpl implements PeopleService {
             request.setRequest(uri);
             requestRepository.save(request);
 
-            return GeneralResponse.dialog(200, String.valueOf(list));
+            return GeneralResponse.response(String.valueOf(list));
         }else{
             return null;
         }
