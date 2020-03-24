@@ -47,4 +47,15 @@ public class PeopleRequest {
     public void setMaxWeight(Double maxWeight) {
         this.maxWeight = maxWeight;
     }
+
+    @Override
+    public String toString() {
+        return "PeopleRequest{" +
+                "name='" + name + '\'' +
+                ", maxAge=" + maxAge +
+                ", placeOfBirth='" + placeOfBirth + '\'' +
+                ", maxHeight=" + maxHeight +
+                ", maxWeight=" + maxWeight +
+                '}';
+    }
 }

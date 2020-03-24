@@ -10,5 +10,5 @@ import java.util.List;
 public interface PeopleService {
     List<People> getPeopleDetail(PeopleRequest peopleRequest);
     People savePeopleDetail(PeopleDetailRequest peopleDetailRequest);
-    GeneralResponse getPeopleHistory(String id);
+    GeneralResponse getPeopleHistory(String id, String uri);
 }

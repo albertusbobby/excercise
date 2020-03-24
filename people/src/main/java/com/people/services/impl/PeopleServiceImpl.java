@@ -2,8 +2,10 @@ package com.people.services.impl;
 
 import com.people.entities.History;
 import com.people.entities.People;
+import com.people.entities.Request;
 import com.people.repositories.HistoryRepository;
 import com.people.repositories.PeopleRepository;
+import com.people.repositories.RequestRepository;
 import com.people.requests.PeopleDetailRequest;
 import com.people.requests.PeopleRequest;
 import com.people.responses.GeneralResponse;
@@ -26,6 +28,8 @@ public class PeopleServiceImpl implements PeopleService {
     PeopleRepository peopleRepository;
     @Autowired
     HistoryRepository historyRepository;
+    @Autowired
+    RequestRepository requestRepository;
 
     @Override
     public List<People> getPeopleDetail(PeopleRequest peopleRequest) {
@@ -36,6 +40,10 @@ public class PeopleServiceImpl implements PeopleService {
         if(peopleRequest.getMaxAge()!=null){
             maxAgeParam = String.valueOf(Integer.parseInt(df.format(date)) - peopleRequest.getMaxAge());;
         }
+
+        Request request = new Request();
+        request.setRequest(peopleRequest.toString());
+        requestRepository.save(request);
 
         return peopleRepository.selectPeopleList(peopleRequest.getName(), peopleRequest.getPlaceOfBirth(),
                 peopleRequest.getMaxHeight(), peopleRequest.getMaxWeight(), maxAgeParam);
@@ -49,7 +57,7 @@ public class PeopleServiceImpl implements PeopleService {
     }
 
     @Override
-    public GeneralResponse getPeopleHistory(String id) {
+    public GeneralResponse getPeopleHistory(String id, String uri) {
         People people = peopleRepository.findById(Long.valueOf(id)).orElseThrow(() -> new NoSuchElementException("Id tidak ada"));
         if(people!=null){
             List<String> list = new ArrayList<>();
@@ -60,10 +68,14 @@ public class PeopleServiceImpl implements PeopleService {
                     list.add(history.getDescription());
                 }
             }
+
+            Request request = new Request();
+            request.setRequest(uri);
+            requestRepository.save(request);
+
             return GeneralResponse.dialog(200, String.valueOf(list));
         }else{
             return null;
         }
-
     }
 }
