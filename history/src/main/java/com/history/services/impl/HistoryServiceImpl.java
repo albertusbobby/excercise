@@ -13,11 +13,11 @@ public class HistoryServiceImpl implements HistoryService {
     @Value("${microservices.people.history.url}") private String peopleHistoryUrl;
 
     @Override
-    public GeneralResponse getHistory(Long id) {
+    public Object getHistory(Long id) {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> result = restTemplate.exchange(peopleHistoryUrl+id, HttpMethod.POST, null, String.class);
         if(result!=null){
-            return GeneralResponse.dialog(200, result.getBody());
+            return result.getBody();
         }else{
             return null;
         }
