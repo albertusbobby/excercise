@@ -35,7 +35,7 @@ public class PeopleController {
         }
     }
 
-    @PostMapping("/history/{id}")
+    @GetMapping("/history/{id}")
     private GeneralResponse peopleHistory(@PathVariable String id, HttpServletRequest request) {
         try {
             return GeneralResponse.response(peopleService.getPeopleHistory(id, request.getRequestURL().toString()));
