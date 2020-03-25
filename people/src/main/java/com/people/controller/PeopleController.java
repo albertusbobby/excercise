@@ -6,7 +6,6 @@ import com.people.requests.PeopleRequest;
 import com.people.responses.GeneralResponse;
 import com.people.services.PeopleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,8 +36,11 @@ public class PeopleController {
     }
 
     @PostMapping("/history/{id}")
-    private GeneralResponse peopleHistory(@PathVariable String id, HttpServletRequest request){
-        System.out.println();
-        return peopleService.getPeopleHistory(id, request.getRequestURL().toString());
+    private GeneralResponse peopleHistory(@PathVariable String id, HttpServletRequest request) {
+        try {
+            return GeneralResponse.response(peopleService.getPeopleHistory(id, request.getRequestURL().toString()));
+        } catch (Exception e) {
+            throw new CommonException(400, e.getMessage());
+        }
     }
 }

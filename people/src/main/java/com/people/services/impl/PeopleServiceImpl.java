@@ -9,6 +9,7 @@ import com.people.repositories.RequestRepository;
 import com.people.requests.PeopleDetailRequest;
 import com.people.requests.PeopleRequest;
 import com.people.responses.GeneralResponse;
+import com.people.responses.HistoryResponse;
 import com.people.services.PeopleService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,23 +57,24 @@ public class PeopleServiceImpl implements PeopleService {
     }
 
     @Override
-    public GeneralResponse getPeopleHistory(String id, String uri) {
+    public List<HistoryResponse> getPeopleHistory(String id, String uri) {
         People people = peopleRepository.findById(Long.valueOf(id)).orElseThrow(() -> new NoSuchElementException("Id tidak ada"));
         if(people!=null){
-            List<String> list = new ArrayList<>();
             String [] strSplit = people.getHistory().split("\\|");
-            for (String s : strSplit) {
-                History history = historyRepository.findById(Long.valueOf(s)).orElse(null);
+            List<HistoryResponse> list = new ArrayList<>();
+            for (int i=0;i<strSplit.length;i++) {
+                History history = historyRepository.findById(Long.valueOf(strSplit[i])).orElse(null);
                 if (history != null) {
-                    list.add(history.getDescription());
+                    HistoryResponse historyResponse = new HistoryResponse();
+                    historyResponse.setId(history.getId());
+                    historyResponse.setDescription(history.getDescription());
+                    list.add(i, historyResponse);
                 }
             }
-
             Request request = new Request();
             request.setRequest(uri);
             requestRepository.save(request);
-
-            return GeneralResponse.response(String.valueOf(list));
+            return list;
         }else{
             return null;
         }
