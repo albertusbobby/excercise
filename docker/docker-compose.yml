@@ -1,9 +1,22 @@
 version: "3"
 services:
+  docker-mysql:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin123
+      - MYSQL_DATABASE=people
+      - MYSQL_USER=bobby
+      - MYSQL_PASSWORD=admin123
+    ports:
+      - 3307:3306
   people:
     build:
       context: ../people
       dockerfile: ./Dockerfile
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://docker-mysql:3306/people?autoReconnect=true&useSSL=false
+    depends_on:
+      - docker-mysql
     ports:
       - 8081:8081
   history:
