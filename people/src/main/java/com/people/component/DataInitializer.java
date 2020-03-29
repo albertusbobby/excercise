@@ -19,12 +19,11 @@ import java.nio.file.Paths;
 import java.sql.Date;
 import java.util.List;
 
-//@Component
+@Component
 public class DataInitializer implements CommandLineRunner {
 
 	private static final String ROOT_FILE = "/home/bobby/workspace/excercise/people/";
     private static Logger logger = LoggerFactory.getLogger(DataInitializer.class);
-    //private static final String ROOT_FILE = "src/";
 	private static final String PEOPLE_PATH = "csv/master_people.csv";
     private static final String HISTORY_PATH = "csv/master_history.csv";
 
