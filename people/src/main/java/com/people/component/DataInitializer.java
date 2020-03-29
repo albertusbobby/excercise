@@ -61,12 +61,12 @@ public class DataInitializer implements CommandLineRunner {
         for (String[] l:list) {
             People people = peopleRepository.findById(Long.valueOf(l[0])).orElse(new People());
             people.setId(Long.valueOf(l[0]));
-            people.setName(l[1]);
-            people.setDateOfBirth(Date.valueOf(l[2]));
-            people.setPlaceOfBirth(l[3]);
-            people.setHeight(Double.parseDouble(l[4]));
-            people.setWeight(Double.parseDouble(l[5]));
-            people.setHistory(l[6]);
+            people.setName(l[4]);
+            people.setDateOfBirth(Date.valueOf(l[1]));
+            people.setPlaceOfBirth(l[5]);
+            people.setHeight(Double.parseDouble(l[2]));
+            people.setWeight(Double.parseDouble(l[6]));
+            people.setHistory(l[3]);
             peopleRepository.save(people);
         }
         csvReaderPeople.close();
