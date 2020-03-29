@@ -23,8 +23,8 @@ import java.util.List;
 public class DataInitializer implements CommandLineRunner {
 
     private static Logger logger = LoggerFactory.getLogger(DataInitializer.class);
-	//private static final String ROOT_FILE = "/home/bobby/workspace/excercise/people/";
-    private static final String ROOT_FILE = "src/";
+	private static final String ROOT_FILE = "/home/bobby/workspace/excercise/people/";
+    //private static final String ROOT_FILE = "src/";
 	private static final String PEOPLE_PATH = "csv/master_people.csv";
     private static final String HISTORY_PATH = "csv/master_history.csv";
 
