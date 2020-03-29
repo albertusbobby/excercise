@@ -19,6 +19,8 @@ services:
       - docker-mysql
     ports:
       - 8081:8081
+    volumes:
+      - /home/bobby/workspace/excercise/people/csv:/home/bobby/shared/csv/
   history:
     build:
       context: ../history
@@ -35,5 +37,3 @@ services:
       - 8083:8083
     depends_on:
       - people
-volumes:
-  - /home/bobby/workspace/excercise/people/csv:/home/bobby/shared/csv/
