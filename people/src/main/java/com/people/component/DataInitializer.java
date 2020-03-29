@@ -23,6 +23,7 @@ import java.util.List;
 public class DataInitializer implements CommandLineRunner {
 
     private static Logger logger = LoggerFactory.getLogger(DataInitializer.class);
+	private static final String ROOT_FILE = "/home/bobby/workspace/excercise/people/";
     private static final String PEOPLE_PATH = "csv/master_people.csv";
     private static final String HISTORY_PATH = "csv/master_history.csv";
 
@@ -40,7 +41,7 @@ public class DataInitializer implements CommandLineRunner {
     }
 
     private void importHistory() throws IOException {
-        Path historyCsv = Paths.get(new File(HISTORY_PATH).getPath());
+        Path historyCsv = Paths.get(new File(ROOT_FILE + HISTORY_PATH).getPath());
         CSVReader csvReaderHistory = new CSVReader(Files.newBufferedReader(historyCsv));
         List<String[]> list = csvReaderHistory.readAll();
         for (String[] l:list) {
@@ -54,7 +55,7 @@ public class DataInitializer implements CommandLineRunner {
     }
 
     private void importPeople() throws IOException {
-        Path peopleCsv = Paths.get(new File(PEOPLE_PATH).getPath());
+        Path peopleCsv = Paths.get(new File(ROOT_FILE + PEOPLE_PATH).getPath());
         CSVReader csvReaderPeople = new CSVReader(Files.newBufferedReader(peopleCsv));
         List<String[]> list = csvReaderPeople.readAll();
         for (String[] l:list) {
