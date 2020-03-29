@@ -19,7 +19,7 @@ import java.nio.file.Paths;
 import java.sql.Date;
 import java.util.List;
 
-//@Component
+@Component
 public class DataInitializer implements CommandLineRunner {
 
 	private static final String ROOT_FILE = "/home/bobby/shared/csv/";
@@ -50,6 +50,7 @@ public class DataInitializer implements CommandLineRunner {
             history.setName(l[1]);
             history.setDescription(l[2]);
             historyRepository.save(history);
+			logger.info("### HISTORY : import id "+history.getId());
         }
         csvReaderHistory.close();
     }
@@ -68,6 +69,7 @@ public class DataInitializer implements CommandLineRunner {
             people.setWeight(Double.parseDouble(l[6]));
             people.setHistory(l[3]);
             peopleRepository.save(people);
+			logger.info("### PEOPLE : import id "+people.getId());
         }
         csvReaderPeople.close();
     }
