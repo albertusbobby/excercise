@@ -22,10 +22,10 @@ import java.util.List;
 @Component
 public class DataInitializer implements CommandLineRunner {
 
-	private static final String ROOT_FILE = "/home/bobby/workspace/excercise/people/";
+	private static final String ROOT_FILE = "/home/bobby/shared/csv/";
     private static Logger logger = LoggerFactory.getLogger(DataInitializer.class);
-	private static final String PEOPLE_PATH = "csv/master_people.csv";
-    private static final String HISTORY_PATH = "csv/master_history.csv";
+	private static final String PEOPLE_PATH = "master_people.csv";
+    private static final String HISTORY_PATH = "master_history.csv";
 
     @Autowired
     private PeopleRepository peopleRepository;
