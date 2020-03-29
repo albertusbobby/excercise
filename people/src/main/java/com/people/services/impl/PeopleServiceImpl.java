@@ -12,6 +12,8 @@ import com.people.responses.GeneralResponse;
 import com.people.responses.HistoryResponse;
 import com.people.services.PeopleService;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,8 @@ import java.util.NoSuchElementException;
 
 @Service
 public class PeopleServiceImpl implements PeopleService {
+	
+	private static Logger logger = LoggerFactory.getLogger(PeopleServiceImpl.class);
 
     @Autowired
     PeopleRepository peopleRepository;
@@ -44,6 +48,7 @@ public class PeopleServiceImpl implements PeopleService {
         Request request = new Request();
         request.setRequest(peopleRequest.toString());
         requestRepository.save(request);
+		logger.info("info insert people detail: "+peopleRequest.toString());
 
         return peopleRepository.selectPeopleList(peopleRequest.getName(), peopleRequest.getPlaceOfBirth(),
                 peopleRequest.getMaxHeight(), peopleRequest.getMaxWeight(), maxAgeParam);
@@ -74,6 +79,7 @@ public class PeopleServiceImpl implements PeopleService {
             Request request = new Request();
             request.setRequest(uri);
             requestRepository.save(request);
+			logger.info("info insert history: "+uri);
             return list;
         }else{
             return null;
