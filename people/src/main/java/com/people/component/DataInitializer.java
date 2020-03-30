@@ -19,7 +19,7 @@ import java.nio.file.Paths;
 import java.sql.Date;
 import java.util.List;
 
-//@Component
+@Component
 public class DataInitializer implements CommandLineRunner {
 
 	private static final String ROOT_FILE = "/home/bobby/shared/csv/";
