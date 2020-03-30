@@ -17,8 +17,8 @@ services:
       dockerfile: ./Dockerfile
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://docker-mysql:3306/people?autoReconnect=true&useSSL=false
-      - SPRING_DATASOURCE_USERNAME=bobbys
-      - SPRING_DATASOURCE_PASSWORD=admin123
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=
     depends_on:
       - docker-mysql
     ports:
