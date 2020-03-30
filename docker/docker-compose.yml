@@ -6,7 +6,7 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=1
       - MYSQL_USER=bobby
       - MYSQL_PASSWORD=admin123
-      #- MYSQL_ROOT_PASSWORD=
+      - MYSQL_ROOT_PASSWORD=
       - MYSQL_DATABASE=people
     ports:
       - 3308:3306
