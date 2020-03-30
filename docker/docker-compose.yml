@@ -6,7 +6,7 @@ services:
         - MYSQL_ALLOW_EMPTY_PASSWORD=1
         - MYSQL_ROOT_PASSWORD=
         - MYSQL_DATABASE=people
-        - MYSQL_USER=bobby
+        - MYSQL_USER=admin
         - MYSQL_PASSWORD=admin123
     ports:
       - 3308:3306
@@ -16,7 +16,7 @@ services:
       context: ../people
       dockerfile: ./Dockerfile
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://docker-mysql:3308/people?autoReconnect=true&useSSL=false
+      - SPRING_DATASOURCE_URL=jdbc:mysql://docker-mysql:3306/people?autoReconnect=true&useSSL=false
       - SPRING_DATASOURCE_USERNAME=bobby
       - SPRING_DATASOURCE_PASSWORD=admin123
     depends_on:
