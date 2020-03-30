@@ -13,7 +13,7 @@ services:
   people:
     image: docker_people
     build:
-      context: ../people
+      context: ./people
       dockerfile: ./Dockerfile
 #    environment:
 #      - SPRING_DATASOURCE_URL=jdbc:mysql://docker-mysql:3306/people?autoReconnect=true&useSSL=false
